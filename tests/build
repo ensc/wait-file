@@ -1,0 +1,16 @@
+#! /bin/bash
+
+TESTDIR=$1
+
+#set -x
+#set
+
+test -d "$TESTDIR" || exit 1
+
+seq=0
+! test -e "$TESTDIR/run/build-seq" || read seq < "$TESTDIR"/run/build-seq
+let seq+=1
+echo "$seq" > "$TESTDIR"/run/build-seq
+
+touch "$TESTDIR"/run/build-run
+touch "$TESTDIR"/run/build-"$seq"

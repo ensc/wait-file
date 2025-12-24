@@ -1,0 +1,37 @@
+#! /bin/bash
+
+TESTDIR=$1
+shift
+
+#set -x
+#set
+
+test -d "$TESTDIR" || exit 1
+
+seq=0
+! test -e "$TESTDIR/run/test-seq" || read seq < "$TESTDIR"/run/test-seq
+let seq+=1
+echo "$seq" > "$TESTDIR"/run/test-seq
+
+ls -la $TESTDIR/run
+
+touch "$TESTDIR"/run/test-run
+touch "$TESTDIR"/run/test-"$seq"
+
+if test -n "$1"; then
+    if test -e "$1"; then
+	touch "$TESTDIR"/run/test-exists
+	touch "$TESTDIR"/run/test-exists-"$seq"
+    else
+	touch "$TESTDIR"/run/test-noexists
+	touch "$TESTDIR"/run/test-noexists-"$seq"
+    fi
+
+    if test -e "$TESTDIR"/run/autoremove; then
+	rm -f "$1"
+    fi
+
+    while test -e "$1"; do
+	sleep 0.01
+    done
+fi
