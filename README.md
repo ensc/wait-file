@@ -13,7 +13,7 @@ Typical usecases are:
 
 - waiting for a buildsystem to touch a stamp file and run some actions
 
-  waiting for changes in configuration files and rerunning a command
+- waiting for changes in configuration files and rerunning a command
 
 It is **NOT** intended for monitoring whole directory trees.
 

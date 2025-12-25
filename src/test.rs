@@ -15,7 +15,6 @@ impl Exit {
     }
 
     pub fn is_running(&self) -> bool {
-        println!("XXX {}", Arc::strong_count(&self.flag));
         Arc::strong_count(&self.flag) > 1
     }
 
