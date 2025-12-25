@@ -4,6 +4,7 @@ license = "GPL-3.0-or-later"
 version = "0.1.0"
 edition = "2024"
 keywords = ["inotify"]
+description = "cli utility to monitor for changes in one or multiple files"
 homepage = "https://gitlab-ext.sigma-chemnitz.de/ensc/wait-file"
 repository = "https://github.com/ensc/wait-file"
 
